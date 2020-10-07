@@ -11,13 +11,12 @@ let searchMovie = (event) => {
 }
 
 async function getMovies(movie) {
-    const API = `http://www.omdbapi.com/?s=${movie}&apikey=cdfe7c8a`;
-    let response = await fetch(API);
-    let data = await response.json();
-    let searchedMovies = data.Search;
-    showMovies(searchedMovies);
-    modalCreator(searchedMovies);
-    console.log(data)
+  const API = `https://www.omdbapi.com/?s=${movie}&apikey=cdfe7c8a`;
+  let response = await fetch(API);
+  let data = await response.json();
+  let searchedMovies = data.Search;
+  showMovies(searchedMovies);
+  modalCreator(searchedMovies);
 }
 
 let showMovies = (movies) => {
@@ -48,7 +47,7 @@ let showMovies = (movies) => {
 }
 
 async function modalTrigger(movie) {
-  const plotAPI = `http://www.omdbapi.com/?t=${movie}&apikey=cdfe7c8a`;
+  const plotAPI = `https://www.omdbapi.com/?t=${movie}&apikey=cdfe7c8a`;
   let response = await fetch(plotAPI);
   let data = await response.json();
   console.log(data)
