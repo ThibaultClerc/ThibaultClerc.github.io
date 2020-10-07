@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Mooveez</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand pl-2" href="index.html"><img class="" src="https://icon-library.com/images/movie-icon/movie-icon-2.jpg" width="40" height="40" alt=""></a>
+    <a class="navbar-brand" href="index.html">Mooveez</a>
+  </nav>
+  <div class="container text-white h-50 pt-5 mt-5 mb-5 pb-5">
+    <div class="row m-0 align-items-center">
+      <div class="col-lg-6 ">
+        <h1 class="display-3"><strong>Bienvenue sur Mooveez</strong></h1>
+        <h3 class="font-weight-normal mt-5 mb-4">Recherchez un film juste ici :</h3>
+        <form class="form-inline my-2 my-lg-0 mt-5" id="myForm">
+          <input class="form-control mr-2 w-75" id="movieSearch" type="search" placeholder="Rechercher un film">
+          <button class="btn btn-danger my-2 my-sm-0" id="searchButton" type="submit" onclick="searchMovie(event)">Rechercher</button>
+        </form>
+      </div>
+      <div class="col-lg-6 text-center">
+        <img class="main-logo img-fluid" src="https://icon-library.com/images/movie-icon/movie-icon-2.jpg" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5 pt-5">
+    <div class="deck d-flex row justify-content-start mt-5 pt-5 m-0 w-100"></div>
+    <div class="text-center" id="dot-container">
+      <i class="dots fas fa-ellipsis-h mt-5 pt-5 text-white"></i>
+      <h6 class="text-white mb-5 pb-5">Copyright © MOOVEEZ</h6>
+    </div>
+  </div>
+  
+  
+  <div id="modals">
+  </div>
+
+  <footer class="pt-5 my-md-5 pt-md-5 border-top container text-white mt-5">
+    <div class="row">
+      <div class="col-12 col-md">
+        <a class="mb-2 text-decoration-none text-white" href="index.html" width="24" height="24"><i class="fas fa-film fa-2x pr-3 pl-2"></i></a>
+        <h6>MOOVEEZ</h6>
+        <small class="d-block mb-3 text-white">© 2017-2019</small>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Features</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-white" href="#">Cool stuff</a></li>
+          <li><a class="text-white" href="#">Random feature</a></li>
+          <li><a class="text-white" href="#">Team feature</a></li>
+          <li><a class="text-white" href="#">Stuff for developers</a></li>
+          <li><a class="text-white" href="#">Another one</a></li>
+          <li><a class="text-white" href="#">Last time</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Resources</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-white" href="#">Resource</a></li>
+          <li><a class="text-white" href="#">Resource name</a></li>
+          <li><a class="text-white" href="#">Another resource</a></li>
+          <li><a class="text-white" href="#">Final resource</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>About</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-white" href="#">Team</a></li>
+          <li><a class="text-white" href="#">Locations</a></li>
+          <li><a class="text-white" href="#">Privacy</a></li>
+          <li><a class="text-white" href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+  
+
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+</html>
