@@ -48,11 +48,18 @@ body {
   font-size: 5vw;
 }
 
-/* .card-container {
+.card-container {
   opacity: 0;
-  transition: opacity .2s;
 }
 
-.card-container.animate {
-  opacity: 1;
-} */
+
+@keyframes anim1 {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

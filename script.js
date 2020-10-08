@@ -17,6 +17,7 @@ async function getMovies(movie) {
   let searchedMovies = data.Search;
   showMovies(searchedMovies);
   modalCreator(searchedMovies);
+  animations();
 }
 
 let showMovies = (movies) => {
@@ -28,7 +29,7 @@ let showMovies = (movies) => {
       movie.Poster = "blank.png"
     }
     const movieCard = document.createElement("div");
-    movieCard.className = "card-container  col-lg-4 mb-5 justify-content-center";
+    movieCard.className = "card-container anim col-lg-4 mb-5 justify-content-center";
     movieCard.innerHTML = `
       <div class="card mx-auto shadow w-100">
         <div class="card-horizontal">
@@ -38,7 +39,7 @@ let showMovies = (movies) => {
           <div class="card-body">
             <h5 class="card-title movie-title">${movie.Title}</h5>
             <h6 class="card-title">${movie.Year}</h6>
-            <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#modal-${movie.Title.replace(/[^A-Z0-9]+/ig, '_')}" onclick="modalTrigger('${movie.Title}')">En savoir plus</button>
+            <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#modal-${movie.imdbID}" onclick="modalTrigger('${movie.imdbID}')">En savoir plus</button>
           </div>
         </div>
       </div>`;
@@ -47,13 +48,12 @@ let showMovies = (movies) => {
 }
 
 async function modalTrigger(movie) {
-  const plotAPI = `https://www.omdbapi.com/?t=${movie}&apikey=cdfe7c8a`;
+  const plotAPI = `https://www.omdbapi.com/?i=${movie}&apikey=cdfe7c8a`;
   let response = await fetch(plotAPI);
   let data = await response.json();
   console.log(data)
-  let movieTitleRegexed = data.Title.replace(/[^A-Z0-9]+/ig, "_")
-  const theFuckingPlot = document.querySelector(`#plot-${movieTitleRegexed}`)
-  if (data.Plot === "N/A") {
+  const theFuckingPlot = document.querySelector(`#plot-${movie}`)
+  if (data.Plot === "N/A" || data.Plot === "") {
     theFuckingPlot.innerHTML = `
       Ce film n'a aucun résumé disponible sur notre site.</br>
       <a href="https://www.imdb.com/title/${data.imdbID}/?ref_=fn_al_tt_1">En voir plus sur IMDB</a>
@@ -66,9 +66,8 @@ async function modalTrigger(movie) {
 let modalCreator = (movies) => {
   movies.forEach(movie => {
     let modal = document.createElement("div")
-    let movieTitleRegexed = movie.Title.replace(/[^A-Z0-9]+/ig, "_")
     modal.className = "modal fade";
-    modal.id = `modal-${movieTitleRegexed}`;
+    modal.id = `modal-${movie.imdbID}`;
     modal.tabIndex = "-1";
     modal.role = "dialog";
     modal.innerHTML = `
@@ -86,10 +85,26 @@ let modalCreator = (movies) => {
             <h3>${movie.Title}</h3>
             <h5>${movie.Year}</h5>
             <hr>
-            <p id="plot-${movieTitleRegexed}"></p>
+            <p id="plot-${movie.imdbID}"></p>
           </div>
         </div>
       </div>`;
     modals.parentNode.insertBefore(modal, modals.nextSibling);
   });
 };
+
+let animations = () => {
+  const cards = document.querySelectorAll('.anim')
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.intersectionRatio > 0) {
+        entry.target.style.animation = `anim1 1s forwards ease-out`;
+      } else {
+        entry.target.style.animation = `none`;
+      }
+    })
+  })
+  cards.forEach(card => {
+    observer.observe(card)
+  })
+}
